@@ -2,8 +2,8 @@
 
 # wget https://raw.githubusercontent.com/ivmech/ivPID/master/PID.py
 import PID
-# pip3 install python-daemon
-import daemon
+# pip3 install daemonize
+from daemonize import Daemonize
 # argv
 from sys import argv
 
@@ -12,40 +12,41 @@ from time import sleep
 
 # emc2301 from https://github.com/mamin27/ecomet_i2c_raspberry_tools/tree/master/i2c_pkg/emc2301_pkg
 from  i2c_pkg.emc2301_pkg import emc2301
-sens = emc2301.EMC2301()
 
 # functions
 def clamp(n,minn,maxn):
     return max(min(maxn,n),minn)
 
-# ARE WE ALL GOOD ?
-ret = sens.self_test()
-if ret != 0 :
-    print("Not a RasPi ? / Not a BitPiRat ?")
-    exit()
-
-# CHECK TEMP AND ADAPT FAN SPEED
-# target temperature is 34°C 
-targetT = 34
-# number of seconds between measures & fan speed update
-updateInterval=5
-# PID settings
-P = 30.
-I = 1.
-D = 1.
-# init
-temperature=0
-
-pid = PID.PID(P,I,D)
-pid.SetPoint = targetT
-pid.setSampleTime(updateInterval)
-pid.SetPoint = targetT
-targetT = pid.SetPoint
-pid.setKp(P)
-pid.setKi(I)
-pid.setKd(D)
-
 def fanctrl(mode=''):
+
+    sens = emc2301.EMC2301()
+
+    # ARE WE ALL GOOD ?
+    ret = sens.self_test()
+    if ret != 0 :
+        print("Not a RasPi ? / Not a BitPiRat ?")
+        exit()
+
+    # CHECK TEMP AND ADAPT FAN SPEED
+    # target temperature is 34°C 
+    targetT = 34
+    # number of seconds between measures & fan speed update
+    updateInterval=5
+    # PID settings
+    P = 30.
+    I = 1.
+    D = 1.
+    # init
+    temperature=0
+
+    pid = PID.PID(P,I,D)
+    pid.SetPoint = targetT
+    pid.setSampleTime(updateInterval)
+    pid.SetPoint = targetT
+    pid.setKp(P)
+    pid.setKi(I)
+    pid.setKd(D)
+
     while True:
 
         # read temperature
@@ -64,8 +65,8 @@ def fanctrl(mode=''):
         sleep(updateInterval)
 
 if len(argv)==2 and argv[1]=="-d":
-    with daemon.DaemonContext():
-        fanctrl()
+    daemon = Daemonize(app="bitpirat_fanctrl",pid="/dev/null",action=fanctrl)
+    daemon.start()
 else:
     fanctrl("debug")
 
