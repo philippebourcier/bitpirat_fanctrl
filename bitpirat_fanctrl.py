@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# pip3 install https://github.com/ivmech/ivPID
+# wget https://raw.githubusercontent.com/ivmech/ivPID/master/PID.py
 import PID
 # pip3 install python-daemon
 import daemon
