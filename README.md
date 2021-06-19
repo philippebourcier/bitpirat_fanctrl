@@ -1,6 +1,6 @@
 # bitpirat_fanctrl
 
-EMC2301 & EMC2302 PID fan controller for BitPiRat Gen1 board & Co
+EMC2301 & EMC2302 PID fan controller for Raspberry Pi CM4 boards : BitPiRat Gen1 board & Co
 
 The only fans tested with this code are Noctua's NF-A8 (12V) and NF-A4x20 (5V or 12V).
 Different brands of fans will have different settings...
