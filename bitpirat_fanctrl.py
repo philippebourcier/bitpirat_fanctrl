@@ -65,7 +65,7 @@ def fanctrl(mode=''):
         sleep(updateInterval)
 
 if len(argv)==2 and argv[1]=="-d":
-    daemon = Daemonize(app="bitpirat_fanctrl",pid="/dev/null",action=fanctrl)
+    daemon = Daemonize(app="bitpirat_fanctrl",pid="/run/bitpirat_fanctrl.pid",action=fanctrl)
     daemon.start()
 else:
     fanctrl("debug")
