@@ -9,7 +9,7 @@ You can find 5V, 12V and 24V fans running on 4 Pin PWM... thus you will have to 
 BitPiRat and Waveshare uses a 5V fan.
 Official Raspberry Pi Compute Module 4 IO Board uses a 12V fan.
 Noctua's NF-A4x20 PWM exists in both 12V and 5V variants.
-Noctua (🇦🇹) is probably the best PC fan brand in the world... you might want to try something else, but you'll have to recreate the /path/to/bitpirat_fanctrl/i2c_pkg/emc2301_pkg/fan_type.py file... which doesn't look like something fun.
+Noctua (Austria) is probably the best PC fan brand in the world... you might want to try something else, but you'll have to recreate the /path/to/bitpirat_fanctrl/i2c_pkg/emc2301_pkg/fan_type.py file... which doesn't look like something fun.
 
 ```
 # cat /etc/rc.local
@@ -39,7 +39,7 @@ https://www.waveshare.com/wiki/CM4-IO-BASE-B
 
 Original Python EMC2301 code from :
 https://github.com/mamin27/ecomet_i2c_raspberry_tools/tree/master/i2c_pkg/emc2301_pkg
-(https://onion.io/2bt-pid-control-python/)
+(Thus this code is GPLv3 and not BSD, sorry...)
 
 PID Implementation from :
 https://onion.io/2bt-pid-control-python/
