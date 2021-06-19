@@ -39,8 +39,12 @@ https://www.waveshare.com/wiki/CM4-IO-BASE-B
 
 Original Python EMC2301 code from :
 https://github.com/mamin27/ecomet_i2c_raspberry_tools/tree/master/i2c_pkg/emc2301_pkg
+
 (Thus this code is GPLv3 and not BSD, sorry...)
 
 PID Implementation from :
 https://onion.io/2bt-pid-control-python/
+
+(you might want to take the readconfig/createconfig code from this script, if you want to "live tune" the PID algorithm) 
+
 
