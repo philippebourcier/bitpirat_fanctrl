@@ -2,7 +2,7 @@
 
 EMC2301 & EMC2302 PID fan controller for BitPiRat Gen1 board & Co
 
-The only fans tested with this code are Noctua's NF-A8 (12V) and NF-A4x20 (5V).
+The only fans tested with this code are Noctua's NF-A8 (12V) and NF-A4x20 (5V or 12V).
 Different brands of fans will have different settings...
 The 4 Pin PWM Fan header doesn't specify a voltage.
 You can find 5V, 12V and 24V fans running on 4 Pin PWM... thus you will have to check carefully what is the right voltage for your board.
